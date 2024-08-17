@@ -1,0 +1,51 @@
+{% extends "inicio/encabezado.html" %}
+
+{% block titulo %} Consultar Comentario{% endblock %}   
+
+{% block imagen %}
+   {% load static %}  
+   <img src="{% static 'inicio/images/telefono2.png' %}" >
+{% endblock %} 
+
+{% block text %}
+<div class="user-info">
+    <h3>Consultar Comentario</h3>
+</div>  
+<span>DSM Consultar</span>  
+{% endblock %}
+
+{% block encabezado %}
+<!-- Encabezado de la página -->
+<div class="page-header">
+    <div class="page-title">
+        <h3>Comentarios
+            <small>Lista de Comentarios</small>
+        </h3>
+    </div>
+</div>
+{% endblock %}
+
+{% block contenido %}
+<table class="table table-bordered table-striped">
+   <thead>
+      <tr>
+         <th>usuario</th>
+         <th>Mensaje</th>
+         <th></th>
+         <th></th>
+         
+      </tr>
+   </thead>
+   <tbody>
+    {% for ComentarioContacto in ComentariosContactos %}
+      <tr>
+         <td class="text-semibold">{{ComentarioContacto.usuario}}</td>
+         <td class="muted">{{ComentarioContacto.mensaje}}</td>
+         <td class="muted"><a href="{% url 'ConsultaIndividual' ComentarioContacto.id %}">Editar</a></td>
+
+         <td class="muted"><a href="{% url 'Eliminar' ComentarioContacto.id %}">Eliminar</a></td>
+      </tr>
+      {% endfor %}
+   </tbody>
+</table>
+{% endblock %}
