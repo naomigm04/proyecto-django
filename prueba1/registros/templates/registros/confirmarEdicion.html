@@ -1,0 +1,38 @@
+{% extends "inicio/encabezado.html" %}
+
+{% block titulo %}Editar{% endblock %}   
+
+{% block imagen %}
+   {% load static %}  
+   <img src="{% static 'inicio/images/home.png' %}" >
+{% endblock %} 
+
+{% block text %}
+<div class="user-info">
+    <h3>Editar Comentario</h3>
+</div>
+<span>DSM Editar</span>    
+{% endblock %}
+
+{% block encabezado %}
+<!-- Encabezado de la página -->
+<div class="page-header">
+    <div class="page-title">
+        <h3>Editar
+            <small>Lista de Alumnos</small>
+        </h3>
+    </div>
+</div>
+{% endblock %}
+
+{% block contenido %}
+<form method="POST">
+{% csrf_token %}
+<div class="callout callout-danger fade in">
+    <h5>Editando comentarios</h5>
+    <p> ¿estas seguro que deseas<strong> Editar </strong>el comentario seleccionado?</p>
+</div>
+<button type="submit" class="btn btn-danger">Si</button>
+<a href="{%url 'Consultar'%}" class="btn btn-primary">Cancelar</a>
+</form>
+{% endblock %}
